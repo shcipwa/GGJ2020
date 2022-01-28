@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Tetsu\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Tetsu\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_GGJ2022.1355643871.00" t="ExcludeRecursive" />
+    <e p="D:\Code\GGJ2022" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Fullscreen" t="Include">
+          <e p="Editor" t="Include">
+            <e p="After.cs" t="Include" />
+            <e p="Cmd.cs" t="Include" />
+            <e p="DisableSceneView.cs" t="Include" />
+            <e p="Displays" t="Include">
+              <e p="DisplayInfo.windows.cs" t="Include" />
+            </e>
+            <e p="Disposables.cs" t="Include" />
+            <e p="FixGameViewMouseInput.cs" t="Include" />
+            <e p="Fullscreen.cs" t="Include" />
+            <e p="FullscreenCallbacks.cs" t="Include" />
+            <e p="FullscreenContainer.cs" t="Include" />
+            <e p="FullscreenContainerInternal.cs" t="Include" />
+            <e p="FullscreenOnPlay.cs" t="Include" />
+            <e p="FullscreenPreferences.cs" t="Include" />
+            <e p="FullscreenRects.cs" t="Include" />
+            <e p="FullscreenUtility.cs" t="Include" />
+            <e p="FullscreenView.cs" t="Include" />
+            <e p="FullscreenWindow.cs" t="Include" />
+            <e p="GlobalToolbarHiding.cs" t="Include" />
+            <e p="Integration.cs" t="Include" />
+            <e p="InternalTypes.cs" t="Include" />
+            <e p="KeepFullscreenBelow.cs" t="Include" />
+            <e p="Linux" t="Include">
+              <e p="NativeFullscreenHook.cs" t="Include" />
+              <e p="wmctrl.cs" t="Include" />
+            </e>
+            <e p="Logger.cs" t="Include" />
+            <e p="MenuItems.cs" t="Include" />
+            <e p="Patcher.cs" t="Include" />
+            <e p="PlaceholderWindow.cs" t="Include" />
+            <e p="PrefItem.cs" t="Include" />
+            <e p="ReflectionUtility.cs" t="Include" />
+            <e p="Shortcut.cs" t="Include" />
+            <e p="ViewPyramid.cs" t="Include" />
+            <e p="Windows" t="Include">
+              <e p="GDI32.cs" t="Include" />
+              <e p="ShCore.cs" t="Include" />
+              <e p="Structs.cs" t="Include" />
+              <e p="User32.cs" t="Include" />
+            </e>
+          </e>
+          <e p="FullscreenEditor.asmdef" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="AnimateRenderEmissive.cs" t="Include" />
+          <e p="DynamicResolutionTest.cs" t="Include" />
+        </e>
+      </e>
+      <e p="FullscreenEditor.csproj" t="IncludeRecursive" />
+      <e p="GGJ2022.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
