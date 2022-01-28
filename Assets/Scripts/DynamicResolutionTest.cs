@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class DynamicResolutionTest : MonoBehaviour
 {
+    public VolumeProfile RuntimeProfile; 
     public int RenderHeight = 500;
     public RenderTextureFormat PixelFormat;
     private RenderTexture _texture;
@@ -22,7 +23,12 @@ public class DynamicResolutionTest : MonoBehaviour
         _screenCamera = transform.GetChild(0).GetComponent<Camera>();
         
         RecalcRT();
-        
+        if (RuntimeProfile != null)
+        {
+            var volume = FindObjectOfType<Volume>();
+            volume.sharedProfile = RuntimeProfile;
+        }
+
     }
 
     private void RecalcRT()

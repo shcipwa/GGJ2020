@@ -4,6 +4,7 @@
     <e p="C:\Users\Tetsu\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Tetsu\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_GGJ2022.1355643871.00" t="ExcludeRecursive" />
     <e p="D:\Code\GGJ2022" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Fullscreen" t="Include">
@@ -51,15 +52,138 @@
           </e>
           <e p="FullscreenEditor.asmdef" t="Include" />
         </e>
+        <e p="Graphy - Ultimate Stats Monitor" t="Include">
+          <e p="Changelog.txt" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="GraphyDebuggerEditor.cs" t="Include" />
+            <e p="GraphyEditorStyle.cs" t="Include" />
+            <e p="GraphyManagerEditor.cs" t="Include" />
+            <e p="GraphyMenuItem.cs" t="Include" />
+            <e p="Tayx.Graphy.Editor.asmdef" t="Include" />
+          </e>
+          <e p="Font" t="Include">
+            <e p="Northwest-Bold" t="Include">
+              <e p="ERIC-TIRADO-NORTHWEST-LICENSE.txt" t="Include" />
+            </e>
+            <e p="Roboto" t="Include">
+              <e p="license.txt" t="Include" />
+            </e>
+          </e>
+          <e p="package.json" t="Include" />
+          <e p="Runtime" t="Include">
+            <e p="Advanced" t="Include">
+              <e p="G_AdvancedData.cs" t="Include" />
+            </e>
+            <e p="Audio" t="Include">
+              <e p="G_AudioGraph.cs" t="Include" />
+              <e p="G_AudioManager.cs" t="Include" />
+              <e p="G_AudioMonitor.cs" t="Include" />
+              <e p="G_AudioText.cs" t="Include" />
+            </e>
+            <e p="Fps" t="Include">
+              <e p="G_FpsGraph.cs" t="Include" />
+              <e p="G_FpsManager.cs" t="Include" />
+              <e p="G_FpsMonitor.cs" t="Include" />
+              <e p="G_FpsText.cs" t="Include" />
+            </e>
+            <e p="Graph" t="Include">
+              <e p="G_Graph.cs" t="Include" />
+            </e>
+            <e p="GraphyDebugger.cs" t="Include" />
+            <e p="GraphyManager.cs" t="Include" />
+            <e p="Ram" t="Include">
+              <e p="G_RamGraph.cs" t="Include" />
+              <e p="G_RamManager.cs" t="Include" />
+              <e p="G_RamMonitor.cs" t="Include" />
+              <e p="G_RamText.cs" t="Include" />
+            </e>
+            <e p="Shader" t="Include">
+              <e p="G_GraphShader.cs" t="Include" />
+            </e>
+            <e p="Tayx.Graphy.asmdef" t="Include" />
+            <e p="UI" t="Include">
+              <e p="IModifiableState.cs" t="Include" />
+              <e p="IMovable.cs" t="Include" />
+            </e>
+            <e p="Util" t="Include">
+              <e p="G_ExtensionMethods.cs" t="Include" />
+              <e p="G_FloatString.cs" t="Include" />
+              <e p="G_Intstring.cs" t="Include" />
+              <e p="G_Singleton.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="GraphMobile.shader" t="Include" />
+            <e p="GraphStandard.shader" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="AnimateRenderEmissive.cs" t="Include" />
           <e p="DynamicResolutionTest.cs" t="Include" />
+          <e p="GridManager.cs" t="Include" />
+          <e p="Singleton.cs" t="Include" />
+        </e>
+        <e p="TomWIP" t="Include">
+          <e p="AIChaseTest.cs" t="Include" />
+          <e p="StarterAssets" t="Include">
+            <e p="Editor" t="Include">
+              <e p="FirstPersonStarterAssetsDeployMenu.cs" t="Include" />
+              <e p="PackageChecker" t="Include">
+                <e p="PackageChecker.cs" t="Include" />
+                <e p="PackageImportList.txt" t="Include" />
+              </e>
+              <e p="ScriptingDefineUtils.cs" t="Include" />
+              <e p="StarterAssetsDeployMenu.cs" t="Include" />
+            </e>
+            <e p="Environment" t="Include">
+              <e p="Shaders" t="Include">
+                <e p="Built-in_RP" t="Include">
+                  <e p="Triplanar.shader" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="FirstPersonController" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="BasicRigidBodyPush.cs" t="Include" />
+                <e p="FirstPersonController.cs" t="Include" />
+              </e>
+            </e>
+            <e p="InputSystem" t="Include">
+              <e p="StarterAssetsInputs.cs" t="Include" />
+            </e>
+            <e p="license.txt" t="Include" />
+            <e p="Mobile" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="CanvasInputs" t="Include">
+                  <e p="UICanvasControllerInput.cs" t="Include" />
+                </e>
+                <e p="Utilities" t="Include">
+                  <e p="MobileDisableAutoSwitchControls.cs" t="Include" />
+                </e>
+                <e p="VirtualInputs" t="Include">
+                  <e p="UIVirtualButton.cs" t="Include" />
+                  <e p="UIVirtualJoystick.cs" t="Include" />
+                  <e p="UIVirtualTouchZone.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="TutorialInfo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="ReadmeEditor.cs" t="Include" />
+                </e>
+                <e p="Readme.cs" t="Include" />
+              </e>
+            </e>
+          </e>
         </e>
       </e>
       <e p="FullscreenEditor.csproj" t="IncludeRecursive" />
       <e p="GGJ2022.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
+      <e p="Tayx.Graphy.csproj" t="IncludeRecursive" />
+      <e p="Tayx.Graphy.Editor.csproj" t="IncludeRecursive" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
     </e>
   </component>
