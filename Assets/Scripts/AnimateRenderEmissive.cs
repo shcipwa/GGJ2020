@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class AnimateRenderEmissive : MonoBehaviour
 {
@@ -21,13 +22,14 @@ public class AnimateRenderEmissive : MonoBehaviour
 
     public bool Trigger;
 
-    
+
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         _propBlock = new MaterialPropertyBlock();
         _renderer = GetComponent<Renderer>();
         FadeSpeed += Random.value * FadeSpeedRandom;
+        
     }
 
     // Update is called once per frame
@@ -46,9 +48,15 @@ public class AnimateRenderEmissive : MonoBehaviour
 
         
         _value -= FadeSpeed * Time.deltaTime;
-        if (_value < 0)
+        
+        if (_value <= 0)
         {
+            _renderer.enabled = false;
             _value = 0;
+        }
+        else
+        {
+            _renderer.enabled = true;
         }
         SetRenderer();
     }

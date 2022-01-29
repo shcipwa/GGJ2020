@@ -10,23 +10,44 @@ public class GridManager : Singleton<GridManager>
     public int GridSize;
     public float GridSpacing;
     public AnimateRenderEmissive[][] GridCells;
+
+    public bool Respawn;
     
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 startPoint = transform.position - new Vector3((GridSize * GridSpacing) / 2f,0,(GridSize * GridSpacing) / 2f);
-        
+        RespawnCells();
+    }
+
+    private void RespawnCells()
+    {
+        if (GridCells != null)
+        {
+            foreach (var animateRenderEmissive in GridCells)
+            {
+                foreach (var renderEmissive in animateRenderEmissive)
+                {
+                    Destroy(renderEmissive.gameObject);
+                }
+            }
+
+            GridCells = null;
+        }
+        Vector3 startPoint =
+            transform.position - new Vector3((GridSize * GridSpacing) / 2f, 0, (GridSize * GridSpacing) / 2f);
+
         GridCells = new AnimateRenderEmissive[GridSize][];
         for (var i = 0; i < GridSize; i++)
         {
             GridCells[i] = new AnimateRenderEmissive[GridSize];
-            
+
             for (var j = 0; j < GridSize; j++)
             {
-                var newCube = Instantiate(CubePrefab, startPoint + Vector3.forward * i* GridSpacing + Vector3.right * j * GridSpacing, Quaternion.identity);
+                var newCube = Instantiate(CubePrefab,
+                    startPoint + Vector3.forward * i * GridSpacing + Vector3.right * j * GridSpacing, Quaternion.identity);
                 newCube.transform.SetParent(transform);
                 var emissive = newCube.GetComponent<AnimateRenderEmissive>();
-                emissive.GridCoord = new Vector2Int(i,j);
+                emissive.GridCoord = new Vector2Int(i, j);
                 GridCells[i][j] = emissive;
             }
         }
@@ -38,6 +59,12 @@ public class GridManager : Singleton<GridManager>
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)));
+        }
+
+        if (Respawn)
+        {
+            RespawnCells();
+            Respawn = false;
         }
     }
 

@@ -139,7 +139,7 @@ MonoBehaviour:
   active: 1
   cameraClusterRange:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 200
 --- !u!114 &-1908836013802290616
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -374,8 +374,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_RayLength:
-    m_OverrideState: 0
-    m_Value: 50
+    m_OverrideState: 1
+    m_Value: 100
   m_ClampValue:
     m_OverrideState: 0
     m_Value: 1
