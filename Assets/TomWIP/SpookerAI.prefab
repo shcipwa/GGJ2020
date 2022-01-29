@@ -204,7 +204,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.8
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -232,9 +232,9 @@ MonoBehaviour:
   VisionPoint: {fileID: 8845409306655361426}
   VisionOccluders:
     serializedVersion: 2
-    m_Bits: 1
-  VisionDistance: 15
-  CurrentState: 0
+    m_Bits: 2722881424
+  VisionDistance: 7.38e-43
+  CurrentState: -1572085920
 --- !u!114 &1428824324206876702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 7092989167376955040, guid: 7ba1f58fb24ad0843871626cfa7f0fb9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9569cbcca70fced4c8685bbd6b781ed4, type: 2}
+      objectReference: {fileID: 2100000, guid: a0d132e9bd8373b4cb6b10a87121ef3a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ba1f58fb24ad0843871626cfa7f0fb9, type: 3}
 --- !u!1 &472587791507428909 stripped

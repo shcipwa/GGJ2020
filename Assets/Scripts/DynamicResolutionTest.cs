@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DynamicResolutionTest : MonoBehaviour
@@ -13,14 +14,15 @@ public class DynamicResolutionTest : MonoBehaviour
     public RenderTextureFormat PixelFormat;
     private RenderTexture _texture;
     private Camera _camera;
-    private Camera _screenCamera;
+    public Camera ScreenCamera;
     private float _currentAspect;
     private int _currentRenderHeight = 0;
+    
 
     public void Start()
     {
         _camera = GetComponent<Camera>();
-        _screenCamera = transform.GetChild(0).GetComponent<Camera>();
+        ScreenCamera = transform.GetChild(0).GetComponent<Camera>();
         
         RecalcRT();
         if (RuntimeProfile != null)
@@ -73,7 +75,7 @@ public class DynamicResolutionTest : MonoBehaviour
     
     private void RenderPipelineManagerOnendFrameRendering(ScriptableRenderContext arg1, Camera[] arg2)
     {
-        if (arg2[0] == _screenCamera)
+        if (arg2[0] == ScreenCamera)
         {
             Graphics.Blit(_texture, (RenderTexture)null,Vector2.one,Vector2.zero);    
         }

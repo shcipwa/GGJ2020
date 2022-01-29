@@ -47,4 +47,5 @@ MonoBehaviour:
   _persistent: 0
   CubePrefab: {fileID: 6858943656013862484, guid: 79cc513ded4207542bd3726847f6f0f7, type: 3}
   GridSize: 20
-  GridSpacing: 4
+  GridSpacing: 10
+  Respawn: 0

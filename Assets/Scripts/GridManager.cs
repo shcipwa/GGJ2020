@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class GridManager : Singleton<GridManager>
 {
@@ -56,7 +58,7 @@ public class GridManager : Singleton<GridManager>
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        if (Input.GetKey(KeyCode.F))
         {
             TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)));
         }
@@ -89,5 +91,30 @@ public class GridManager : Singleton<GridManager>
         }
         //Debug.Log("Success: " + gridCoord);
         GridCells[gridCoord.x][gridCoord.y].TriggerCell();
+    }
+
+    public void TriggerNearest(Vector3 transformPosition)
+    {
+        var coordVec = GetNearestCell(transformPosition);
+
+        GridCells[coordVec.x][coordVec.y].TriggerCell();
+    }
+
+    private Vector2Int GetNearestCell(Vector3 transformPosition)
+    {
+        Vector3 startPoint =
+            transform.position - new Vector3((GridSize * GridSpacing) / 2f, 0, (GridSize * GridSpacing) / 2f);
+
+        var delta = transformPosition - startPoint;
+
+        int x = (int) (delta.x / GridSpacing);
+        int y = (int) (delta.z / GridSpacing);
+
+        x = Math.Clamp(x, 0, GridSize);
+        y = Math.Clamp(y, 0, GridSize);
+        
+        var coordVec = new Vector2Int(y, x);
+        //Debug.Log("Got coord " + coordVec + " from pos " + transformPosition + " start point was " + startPoint + " delta " + delta);
+        return coordVec;
     }
 }

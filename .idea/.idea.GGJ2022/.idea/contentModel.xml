@@ -7,6 +7,90 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Creator Kit - FPS" t="Include">
+          <e p="Art" t="Include">
+            <e p="Font" t="Include">
+              <e p="OFL.txt" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="Acid.shader" t="Include" />
+              <e p="Brain.shader" t="Include" />
+              <e p="BubbleBurst.shader" t="Include" />
+              <e p="Fleisch.shader" t="Include" />
+              <e p="LiquidContent.shader" t="Include" />
+              <e p="MapShader.shader" t="Include" />
+              <e p="StandardCutout.shader" t="Include" />
+              <e p="StandardFleisch.shader" t="Include" />
+              <e p="StandardFleischDisolve.shader" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Audio" t="Include">
+              <e p="RandomPlayer.cs" t="Include" />
+              <e p="UIAudioPlayer.cs" t="Include" />
+              <e p="WorldAudioPool.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="CreateSceneMenu.cs" t="Include" />
+              <e p="GradientTextureEditor.cs" t="Include" />
+              <e p="HideSkybox.cs" t="Include" />
+            </e>
+            <e p="Effects" t="Include">
+              <e p="CameraShaker.cs" t="Include" />
+              <e p="ImpactManager.cs" t="Include" />
+              <e p="LiquidAmmoDisplay.cs" t="Include" />
+              <e p="LiquidContainer.cs" t="Include" />
+              <e p="TextAmmoDisplay.cs" t="Include" />
+            </e>
+            <e p="GameDatabase.cs" t="Include" />
+            <e p="GradientTexture.cs" t="Include" />
+            <e p="Helpers.cs" t="Include" />
+            <e p="KeyLockSystem" t="Include">
+              <e p="Key.cs" t="Include" />
+              <e p="Keychain.cs" t="Include" />
+              <e p="Lock.cs" t="Include" />
+            </e>
+            <e p="LevelLayout" t="Include">
+              <e p="LevelLayout.cs" t="Include" />
+              <e p="LevelRoom.cs" t="Include" />
+              <e p="LevelRoomGroup.cs" t="Include" />
+            </e>
+            <e p="Minimap" t="Include">
+              <e p="MinimapElement.cs" t="Include" />
+              <e p="MinimapSystem.cs" t="Include" />
+            </e>
+            <e p="System" t="Include">
+              <e p="AmmoBox.cs" t="Include" />
+              <e p="Controller.cs" t="Include" />
+              <e p="EndCheckpoint.cs" t="Include" />
+              <e p="GameSystem.cs" t="Include" />
+              <e p="PoolSystem.cs" t="Include" />
+              <e p="Projectile.cs" t="Include" />
+              <e p="StartCheckpoint.cs" t="Include" />
+              <e p="Target.cs" t="Include" />
+              <e p="TargetSpawner.cs" t="Include" />
+              <e p="Weapon.cs" t="Include" />
+              <e p="WeaponAnimationEventHandler.cs" t="Include" />
+            </e>
+            <e p="TriggerActionsSystem" t="Include">
+              <e p="DissolveAction.cs" t="Include" />
+              <e p="EnableObjectAction.cs" t="Include" />
+              <e p="GameAction.cs" t="Include" />
+              <e p="MovingAction.cs" t="Include" />
+              <e p="TargetChecker.cs" t="Include" />
+            </e>
+            <e p="UI" t="Include">
+              <e p="FinalScoreUI.cs" t="Include" />
+              <e p="FullscreenMap.cs" t="Include" />
+              <e p="GameSystemInfo.cs" t="Include" />
+              <e p="LevelSelectionUI.cs" t="Include" />
+              <e p="MinimapUI.cs" t="Include" />
+              <e p="PauseMenu.cs" t="Include" />
+              <e p="RestartLevel.cs" t="Include" />
+              <e p="WeaponInfoUI.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Fullscreen" t="Include">
           <e p="Editor" t="Include">
             <e p="After.cs" t="Include" />
@@ -117,6 +201,7 @@
             <e p="GraphStandard.shader" t="Include" />
           </e>
         </e>
+        <e p="RandomMovement.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AnimateRenderEmissive.cs" t="Include" />
           <e p="DynamicResolutionTest.cs" t="Include" />
@@ -129,6 +214,10 @@
           <e p="Editor" t="Include">
             <e p="JointSwapper.cs" t="Include" />
           </e>
+          <e p="PlayerTag.cs" t="Include" />
+          <e p="RandomizeScaleOnSpawn.cs" t="Include" />
+          <e p="SpookerAttack.cs" t="Include" />
+          <e p="SpookerBehaviour.cs" t="Include" />
           <e p="StarterAssets" t="Include">
             <e p="Editor" t="Include">
               <e p="FirstPersonStarterAssetsDeployMenu.cs" t="Include" />

@@ -47,14 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620cdd7bca13d9e4098af90ae99e1536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerDelayRandom: 0.01
+  TriggerDelayRandom: 0.05
   TriggerDelay: 0.05
   MaxBrightness: 10
   GridCoord: {x: 0, y: 0}
   Color1: {r: 1, g: 1, b: 1, a: 1}
   Color2: {r: 1, g: 1, b: 1, a: 1}
-  FadeSpeed: 0.4
-  FadeSpeedRandom: 0.5
+  FadeSpeed: 0.7
+  FadeSpeedRandom: 0.2
   FadePower: 4
   Trigger: 0
 --- !u!33 &6858943656013862480
