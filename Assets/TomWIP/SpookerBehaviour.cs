@@ -21,6 +21,8 @@ public class SpookerBehaviour : MonoBehaviour
     public Transform VisionPoint;
     public LayerMask VisionOccluders;
     public float VisionDistance = 20;
+    public float WanderSpeed = 1f;
+    public float ChaseSpeed = 2.8f;
     
     public State CurrentState;
 
@@ -120,6 +122,8 @@ public class SpookerBehaviour : MonoBehaviour
 
     private void BeginWandering()
     {
+        _navAgent.speed = WanderSpeed;
+        
         var count = 0;
         var target = Vector3.zero;
         while (!FindRandomWanderTarget(out target))
@@ -140,6 +144,7 @@ public class SpookerBehaviour : MonoBehaviour
     private void BeginAttacking()
     {
         CurrentState = State.Attacking;
+        _navAgent.speed = ChaseSpeed;
         _navAgent.SetDestination(PlayerTag.Instance.transform.position);
         _timeSinceSeen = 0f;
     }
@@ -159,11 +164,15 @@ public class SpookerBehaviour : MonoBehaviour
     
     private bool HasVision()
     {
-        // TODO: add directional test with dot product?
-        
         var playerPos =PlayerTag.Instance.transform.position + Vector3.up;
         var visionPoint = VisionPoint.position;
         var direction = playerPos - visionPoint;
+        
+        if (Vector3.Dot(transform.forward, direction) < 0)
+        {
+            return false;
+        }
+        
         var ray = new Ray
         {
             direction = direction,
