@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations.Rigging;
 
 [RequireComponent(typeof(SpookerAttack))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -18,15 +18,27 @@ public class SpookerBehaviour : MonoBehaviour
     private SpookerAttack _attack;
 
     public Animator SpookerAnimator;
+    public Transform FocusAimer;
+    public MultiAimConstraint AimConstraint;
+    public MultiRotationConstraint AimTwistHelper;
     public Transform VisionPoint;
     public LayerMask VisionOccluders;
     public float VisionDistance = 20;
+    public float WanderSpeed = 1f;
+    public float ChaseSpeed = 2.8f;
     
     public State CurrentState;
 
     private float _idleTime;
     private float _timeToWait;
     private float _timeSinceSeen;
+    private float _focusTimer;
+    private bool _hasFocus;
+    private Vector3 _focusPosition;
+    private Transform _focusObject;
+    private Coroutine _focusRoutine;
+    private Coroutine _focusInRoutine;
+    private Coroutine _focusOutRoutine;
 
     private int _moveParamHash = Animator.StringToHash("MoveSpeed");
 
@@ -111,6 +123,70 @@ public class SpookerBehaviour : MonoBehaviour
         SpookerAnimator.SetFloat(_moveParamHash, _navAgent.velocity.magnitude);
     }
 
+    private IEnumerator BeginFocusRoutine()
+    {
+        while (AimConstraint.weight < 1f)
+        {
+            AimConstraint.weight += Time.deltaTime * 2f;
+            AimTwistHelper.weight += Time.deltaTime * 2f;
+            yield return null;
+        }
+
+        _focusInRoutine = null;
+    }
+
+    private IEnumerator EndFocusRoutine()
+    {
+        while (AimConstraint.weight > 0f)
+        {
+            AimConstraint.weight -= Time.deltaTime * 2f;
+            AimTwistHelper.weight -= Time.deltaTime * 2f;
+            yield return null;
+        }
+
+        _focusOutRoutine = null;
+    }
+
+    private IEnumerator FocusRoutine()
+    {
+        _hasFocus = true;
+        
+        if (_focusOutRoutine != null)
+        {
+            StopCoroutine(_focusOutRoutine);
+            _focusOutRoutine = null;
+        }
+
+        if (AimConstraint.weight < 1f && _focusInRoutine == null)
+        {
+            _focusInRoutine = StartCoroutine(BeginFocusRoutine());
+        }
+
+        while (_focusTimer > 0)
+        {
+            _focusTimer -= Time.deltaTime;
+
+            if (_focusObject != null)
+            {
+                _focusPosition = _focusObject.position;
+            }
+
+            FocusAimer.position = _focusPosition;
+            
+            yield return null;
+        }
+
+        if (_focusInRoutine != null)
+        {
+            StopCoroutine(_focusInRoutine);
+            _focusInRoutine = null;
+        }
+
+        _hasFocus = false;
+        _focusRoutine = null;
+        _focusOutRoutine = StartCoroutine(EndFocusRoutine());
+    }
+
     private void BeginIdle()
     {
         CurrentState = State.Idle;
@@ -120,6 +196,8 @@ public class SpookerBehaviour : MonoBehaviour
 
     private void BeginWandering()
     {
+        _navAgent.speed = WanderSpeed;
+        
         var count = 0;
         var target = Vector3.zero;
         while (!FindRandomWanderTarget(out target))
@@ -140,6 +218,7 @@ public class SpookerBehaviour : MonoBehaviour
     private void BeginAttacking()
     {
         CurrentState = State.Attacking;
+        _navAgent.speed = ChaseSpeed;
         _navAgent.SetDestination(PlayerTag.Instance.transform.position);
         _timeSinceSeen = 0f;
     }
@@ -159,11 +238,15 @@ public class SpookerBehaviour : MonoBehaviour
     
     private bool HasVision()
     {
-        // TODO: add directional test with dot product?
-        
         var playerPos =PlayerTag.Instance.transform.position + Vector3.up;
         var visionPoint = VisionPoint.position;
         var direction = playerPos - visionPoint;
+        
+        if (Vector3.Dot(transform.forward, direction) < 0)
+        {
+            return false;
+        }
+        
         var ray = new Ray
         {
             direction = direction,
@@ -174,5 +257,27 @@ public class SpookerBehaviour : MonoBehaviour
         Debug.DrawLine(visionPoint, visionPoint + direction * Mathf.Min(VisionDistance, direction.magnitude),
             result ? Color.red : Color.green);        
         return !result;
+    }
+
+    public void DrawFocus(Transform target, float focusTime = 1f)
+    {
+        _focusObject = target;
+        _focusTimer = focusTime;
+
+        if (_focusRoutine == null)
+        {
+            _focusRoutine = StartCoroutine(FocusRoutine());
+        }
+    }
+
+    public void DrawFocus(Vector3 position, float focusTime = 1f)
+    {
+        _focusPosition = position;
+        _focusTimer = focusTime;
+
+        if (_focusRoutine == null)
+        {
+            _focusRoutine = StartCoroutine(FocusRoutine());
+        }
     }
 }
