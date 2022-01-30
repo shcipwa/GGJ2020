@@ -11,7 +11,8 @@ public class SpookerBehaviour : MonoBehaviour
     {
         Idle,
         Wandering,
-        Attacking
+        Attacking,
+        Distracted
     }
 
     private NavMeshAgent _navAgent;
@@ -40,6 +41,9 @@ public class SpookerBehaviour : MonoBehaviour
     private Coroutine _focusInRoutine;
     private Coroutine _focusOutRoutine;
 
+    private float _distractTimer;
+    
+
     private int _moveParamHash = Animator.StringToHash("MoveSpeed");
 
     private void Awake()
@@ -61,6 +65,9 @@ public class SpookerBehaviour : MonoBehaviour
             case State.Attacking:
                 AttackingUpdate();
                 break;
+            case State.Distracted:
+                DistractedUpdate();
+                break;
         }
         
         UpdateAnimator();
@@ -68,7 +75,7 @@ public class SpookerBehaviour : MonoBehaviour
 
     private void IdleUpdate()
     {
-        if (HasVision())
+        if (ShouldGoAggressive())
         {
             BeginAttacking();
             return;
@@ -83,7 +90,7 @@ public class SpookerBehaviour : MonoBehaviour
 
     private void WanderingUpdate()
     {
-        if (HasVision())
+        if (ShouldGoAggressive())
         {
             BeginAttacking();
             return;
@@ -97,7 +104,7 @@ public class SpookerBehaviour : MonoBehaviour
 
     private void AttackingUpdate()
     {
-        if (HasVision())
+        if (ShouldGoAggressive())
         {
             _timeSinceSeen = 0f;
             var playerPos = PlayerTag.Instance.transform.position;
@@ -114,6 +121,22 @@ public class SpookerBehaviour : MonoBehaviour
             if (_timeSinceSeen >= 5f)
             {
                 BeginIdle();
+            }
+        }
+    }
+
+    private void DistractedUpdate()
+    {
+        _distractTimer -= Time.deltaTime;
+        if (_distractTimer <= 0f)
+        {
+            if (ShouldGoAggressive())
+            {
+                BeginAttacking();
+            }
+            else
+            {
+                BeginWandering();
             }
         }
     }
@@ -223,6 +246,15 @@ public class SpookerBehaviour : MonoBehaviour
         _timeSinceSeen = 0f;
     }
 
+    private void BeginDistraction(Vector3 distractionPosition, float distractionTime)
+    {
+        CurrentState = State.Distracted;
+        _navAgent.speed = ChaseSpeed;
+        _navAgent.SetDestination(distractionPosition);
+        _distractTimer = distractionTime;
+        DrawFocus(distractionPosition, distractionTime);
+    }
+
     private bool FindRandomWanderTarget(out Vector3 target)
     {
         var randomPos = transform.position + Random.insideUnitSphere * Random.Range(5f, 15f);
@@ -235,6 +267,15 @@ public class SpookerBehaviour : MonoBehaviour
         target = hit.position;
         return true;
     }
+
+    private bool ShouldGoAggressive()
+    {
+        if (PlayerTag.Health.KnockedOut)
+        {
+            return false;
+        }
+        return IsGridActive() && HasVision();
+    }
     
     private bool HasVision()
     {
@@ -243,6 +284,11 @@ public class SpookerBehaviour : MonoBehaviour
         var direction = playerPos - visionPoint;
         
         if (Vector3.Dot(transform.forward, direction) < 0)
+        {
+            return false;
+        }
+
+        if (direction.sqrMagnitude > VisionDistance * VisionDistance)
         {
             return false;
         }
@@ -259,6 +305,17 @@ public class SpookerBehaviour : MonoBehaviour
         return !result;
     }
 
+    private bool IsGridActive()
+    {
+        // todo: implement a real check
+        return true;
+    }
+
+    public void Distract(Vector3 distractionPosition, float distrtactionLength)
+    {
+        BeginDistraction(distractionPosition, distrtactionLength);
+    }
+    
     public void DrawFocus(Transform target, float focusTime = 1f)
     {
         _focusObject = target;
@@ -272,6 +329,7 @@ public class SpookerBehaviour : MonoBehaviour
 
     public void DrawFocus(Vector3 position, float focusTime = 1f)
     {
+        _focusObject = null;
         _focusPosition = position;
         _focusTimer = focusTime;
 
