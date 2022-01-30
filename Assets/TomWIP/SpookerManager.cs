@@ -20,6 +20,11 @@ public class SpookerManager : MonoBehaviour
         Instance = this;
         
         SpawnPoints.Clear();
+
+        if (Spookers.Count == 0)
+        {
+            OnPlayerRespawn();
+        }
     }
 
     public void OnPlayerRespawn()
