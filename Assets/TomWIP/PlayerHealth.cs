@@ -115,6 +115,8 @@ public class PlayerHealth : MonoBehaviour
         {
             exposure.fixedExposure.value = -1.503142f;
         }
+        
+        
 
         _recentHits = 0;
         _regenTimer = 0;

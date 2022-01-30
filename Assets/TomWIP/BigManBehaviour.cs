@@ -17,6 +17,8 @@ public class BigManBehaviour : MonoBehaviour
     public Animator BigManAnimator;
     public Animator FistAnimator;
 
+    private float _smashTime = -1;
+
     private TweenerCore<Vector3, Vector3, VectorOptions> _mover;
 
     public void WakeUp(float moveTime)
@@ -37,6 +39,16 @@ public class BigManBehaviour : MonoBehaviour
         BigManAnimator.SetFloat("MoveSpeed", 0f);
         FistAnimator.Play("Clench");
         BigManAnimator.Play("Smash", 1);
+
+        _smashTime = Time.time + .75f;
+    }
+
+    public void Update()
+    {
+        if (_smashTime > 0 && _smashTime < Time.time)
+        {
+            GridManager.Instance.TriggerNearest(transform.position,GridEventType.DestroyGrid);
+        }
     }
 
     public void SleepAndReset()
