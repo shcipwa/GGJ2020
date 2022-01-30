@@ -93,6 +93,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void DoRespawn()
     {
+        // respawns spookers
+        SpookerManager.Instance.OnPlayerRespawn();
+        
         var profile = GlobalVolume.GetProfile();
         if (profile.TryGet(out Vignette vignette))
         {
@@ -105,6 +108,7 @@ public class PlayerHealth : MonoBehaviour
             exposure.fixedExposure.value = -1.503142f;
         }
 
+        _recentHits = 0;
         _regenTimer = 0;
         _knockedOut = false;
     }

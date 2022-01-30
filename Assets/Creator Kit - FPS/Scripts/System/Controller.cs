@@ -136,7 +136,7 @@ public class Controller : MonoBehaviour
 
         Speed = 0;
         Vector3 move = Vector3.zero;
-        if (!m_IsPaused && !LockControl)
+        if (!m_IsPaused && !LockControl && !PlayerTag.Health.KnockedOut)
         {
             // Jump (we do it first as 
             if (m_Grounded && Input.GetButtonDown("Jump"))
