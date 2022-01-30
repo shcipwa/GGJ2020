@@ -104,7 +104,7 @@ public class SpookerBehaviour : MonoBehaviour
 
     private void AttackingUpdate()
     {
-        if (HasVision())
+        if (ShouldGoAggressive())
         {
             _timeSinceSeen = 0f;
             var playerPos = PlayerTag.Instance.transform.position;
@@ -270,6 +270,10 @@ public class SpookerBehaviour : MonoBehaviour
 
     private bool ShouldGoAggressive()
     {
+        if (PlayerTag.Health.KnockedOut)
+        {
+            return false;
+        }
         return IsGridActive() && HasVision();
     }
     
@@ -299,7 +303,7 @@ public class SpookerBehaviour : MonoBehaviour
     private bool IsGridActive()
     {
         // todo: implement a real check
-        return false;
+        return true;
     }
 
     public void Distract(Vector3 distractionPosition, float distrtactionLength)

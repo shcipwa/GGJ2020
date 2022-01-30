@@ -44,10 +44,10 @@ public class SpookerAttack : MonoBehaviour
         }
         
         // attack hit check
-        if (Physics.CheckSphere(HandBone.position, 0.25f, AttackCollision, QueryTriggerInteraction.Ignore))
+        if (Physics.CheckSphere(HandBone.position, 0.33f, AttackCollision, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log("HIT PLAYER", this);
-            // TODO: player hit effects
+            //Debug.Log("HIT PLAYER", this);
+            PlayerTag.Health.TakeDamage();
         }
         
         // fade out arm IK

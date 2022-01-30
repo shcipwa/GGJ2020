@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerTag : MonoBehaviour
 {
     public static PlayerTag Instance;
+    public static PlayerHealth Health;
 
     private void Awake()
     {
@@ -12,5 +13,10 @@ public class PlayerTag : MonoBehaviour
         }
 
         Instance = this;
+        Health = GetComponent<PlayerHealth>();
+        if (Health == null)
+        {
+            Debug.LogError("Missing PlayerHealth component", this);
+        }
     }
 }
