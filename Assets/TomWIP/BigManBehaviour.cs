@@ -17,6 +17,8 @@ public class BigManBehaviour : MonoBehaviour
     public Animator BigManAnimator;
     public Animator FistAnimator;
 
+    private float _smashTime = -1;
+
     private TweenerCore<Vector3, Vector3, VectorOptions> _mover;
 
     public void WakeUp(float moveTime)
@@ -28,12 +30,25 @@ public class BigManBehaviour : MonoBehaviour
         AimTwistHelper.weight = 1f;
         _mover = BigManRoot.DOMove(EndPosition.position, moveTime);
         _mover.onComplete = SmashGrid;
+        
+        BigManAnimator.SetFloat("MoveSpeed", 1f);
     }
 
     private void SmashGrid()
     {
+        BigManAnimator.SetFloat("MoveSpeed", 0f);
         FistAnimator.Play("Clench");
         BigManAnimator.Play("Smash", 1);
+
+        _smashTime = Time.time + .75f;
+    }
+
+    public void Update()
+    {
+        if (_smashTime > 0 && _smashTime < Time.time)
+        {
+            GridManager.Instance.TriggerNearest(transform.position,GridEventType.DestroyGrid);
+        }
     }
 
     public void SleepAndReset()
@@ -52,5 +67,6 @@ public class BigManBehaviour : MonoBehaviour
         Debug.Log($"BigMan {BigManRoot.name} went to sleep", BigManRoot);
         
         FistAnimator.Play("Relax");
+        BigManAnimator.SetFloat("MoveSpeed", 0f);
     }
 }

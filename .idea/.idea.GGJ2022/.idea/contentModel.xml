@@ -231,15 +231,26 @@
           <e p="AIChaseTest.cs" t="Include" />
           <e p="AttentionGrabTester.cs" t="Include" />
           <e p="BasicEmissionPulse.cs" t="Include" />
+          <e p="BigManBehaviour.cs" t="Include" />
+          <e p="BigManManager.cs" t="Include" />
+          <e p="DistractOnSpawn.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="JointSwapper.cs" t="Include" />
           </e>
           <e p="FollowPlayer.cs" t="Include" />
+          <e p="GlobalVolume.cs" t="Include" />
+          <e p="HentaiBehaviour.cs" t="Include" />
+          <e p="Initializer.cs" t="Include" />
+          <e p="PlayerHealth.cs" t="Include" />
           <e p="PlayerTag.cs" t="Include" />
           <e p="RandomizeScaleOnSpawn.cs" t="Include" />
+          <e p="SpawnVolume.cs" t="Include" />
           <e p="SpookerAttack.cs" t="Include" />
           <e p="SpookerBehaviour.cs" t="Include" />
+          <e p="SpookerIdlePicker.cs" t="Include" />
+          <e p="SpookerManager.cs" t="Include" />
           <e p="SpookerMoveTest.cs" t="Include" />
+          <e p="SpookerSpawnPoint.cs" t="Include" />
           <e p="StarterAssets" t="Include">
             <e p="Editor" t="Include">
               <e p="FirstPersonStarterAssetsDeployMenu.cs" t="Include" />
