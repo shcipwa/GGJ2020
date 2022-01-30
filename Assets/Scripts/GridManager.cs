@@ -60,7 +60,17 @@ public class GridManager : Singleton<GridManager>
     {
         if (Input.GetKey(KeyCode.F))
         {
-            TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)));
+            TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)),GridEventType.WhiteFlash);
+        }
+        
+        if (Input.GetKey(KeyCode.E))
+        {
+            TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)),GridEventType.DestroyGrid);
+        }
+        
+        if (Input.GetKey(KeyCode.R))
+        {
+            TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)),GridEventType.RepairGrid);
         }
 
         if (Respawn)
@@ -70,19 +80,19 @@ public class GridManager : Singleton<GridManager>
         }
     }
 
-    public void TriggerAdjacent(Vector2Int gridCoord)
+    public void TriggerAdjacent(Vector2Int gridCoord, GridEventType type)
     {
-        TriggerCell(gridCoord + Vector2Int.down);
-        TriggerCell(gridCoord + Vector2Int.down + Vector2Int.left);
-        TriggerCell(gridCoord + Vector2Int.left);
-        TriggerCell(gridCoord + Vector2Int.down + Vector2Int.right);
-        TriggerCell(gridCoord + Vector2Int.right);
-        TriggerCell(gridCoord + Vector2Int.up + Vector2Int.left);
-        TriggerCell(gridCoord + Vector2Int.up);
-        TriggerCell(gridCoord + Vector2Int.up + Vector2Int.right);
+        TriggerCell(gridCoord + Vector2Int.down,type);
+        TriggerCell(gridCoord + Vector2Int.down + Vector2Int.left,type);
+        TriggerCell(gridCoord + Vector2Int.left,type);
+        TriggerCell(gridCoord + Vector2Int.down + Vector2Int.right,type);
+        TriggerCell(gridCoord + Vector2Int.right,type);
+        TriggerCell(gridCoord + Vector2Int.up + Vector2Int.left,type);
+        TriggerCell(gridCoord + Vector2Int.up,type);
+        TriggerCell(gridCoord + Vector2Int.up + Vector2Int.right,type);
     }
 
-    private void TriggerCell(Vector2Int gridCoord)
+    private void TriggerCell(Vector2Int gridCoord, GridEventType type)
     {
         //Debug.Log("Attempt: " + gridCoord);
         if (gridCoord.x >= GridSize || gridCoord.y >= GridSize || gridCoord.x < 0 || gridCoord.y < 0)
@@ -90,14 +100,14 @@ public class GridManager : Singleton<GridManager>
             return;
         }
         //Debug.Log("Success: " + gridCoord);
-        GridCells[gridCoord.x][gridCoord.y].TriggerCell();
+        GridCells[gridCoord.x][gridCoord.y].TriggerCell(type);
     }
 
-    public void TriggerNearest(Vector3 transformPosition)
+    public void TriggerNearest(Vector3 transformPosition, GridEventType type)
     {
         var coordVec = GetNearestCell(transformPosition);
 
-        GridCells[coordVec.x][coordVec.y].TriggerCell();
+        GridCells[coordVec.x][coordVec.y].TriggerCell(type);
     }
 
     private Vector2Int GetNearestCell(Vector3 transformPosition)
