@@ -41,7 +41,14 @@ public class BigManManager : MonoBehaviour
         }
         Instance = this;
         
-        SleepAndReset();
+        if(!WeWereActuallyAbleToGetTheGridCollapseWorkingItsAMiracle)
+        {
+            SleepAndReset();
+        }
+        else
+        {
+            WakeUp();
+        }
     }
 
     private void Update()

@@ -30,10 +30,13 @@ public class BigManBehaviour : MonoBehaviour
         AimTwistHelper.weight = 1f;
         _mover = BigManRoot.DOMove(EndPosition.position, moveTime);
         _mover.onComplete = SmashGrid;
+        
+        BigManAnimator.SetFloat("MoveSpeed", 1f);
     }
 
     private void SmashGrid()
     {
+        BigManAnimator.SetFloat("MoveSpeed", 0f);
         FistAnimator.Play("Clench");
         BigManAnimator.Play("Smash", 1);
 
@@ -64,5 +67,6 @@ public class BigManBehaviour : MonoBehaviour
         Debug.Log($"BigMan {BigManRoot.name} went to sleep", BigManRoot);
         
         FistAnimator.Play("Relax");
+        BigManAnimator.SetFloat("MoveSpeed", 0f);
     }
 }

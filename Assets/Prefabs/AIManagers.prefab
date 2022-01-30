@@ -78,7 +78,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spookers: []
+  SpawnPoints: []
   Prefab: {fileID: 5587379418667454294, guid: 7a62f91ade62c9741b288cb5039001e4, type: 3}
+  SpawnCountOnRespawn: 10
 --- !u!1 &4371732435872614544
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,3 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BigMen: []
   BigManTimeToSmash: 120
+  WeWereActuallyAbleToGetTheGridCollapseWorkingItsAMiracle: 1
+  WakeUpIntervals: 120
