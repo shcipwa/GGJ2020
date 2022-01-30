@@ -9,6 +9,8 @@ public class SpookerAttack : MonoBehaviour
     public Transform RightHandIKTarget;
     public ChainIKConstraint LeftHandIKConstraint;
     public ChainIKConstraint RightHandIKConstraint;
+    public Transform HandBone;
+    public LayerMask AttackCollision;
 
     public float AttackSpeed = 2f;
     public float AttackCooldown = 1f;
@@ -29,6 +31,7 @@ public class SpookerAttack : MonoBehaviour
     {
         _attacking = true;
 
+        // fade in arm IK
         while (LeftHandIKConstraint.weight < 1f)
         {
             var deltaTime = Time.deltaTime;
@@ -39,7 +42,15 @@ public class SpookerAttack : MonoBehaviour
             RightHandIKTarget.transform.position = playerPos;
             yield return null;
         }
-
+        
+        // attack hit check
+        if (Physics.CheckSphere(HandBone.position, 0.25f, AttackCollision, QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log("HIT PLAYER", this);
+            // TODO: player hit effects
+        }
+        
+        // fade out arm IK
         while (LeftHandIKConstraint.weight > 0f)
         {
             var deltaTime = Time.deltaTime;
@@ -51,6 +62,7 @@ public class SpookerAttack : MonoBehaviour
             yield return null;
         }
 
+        // attack cooldown
         var timer = Time.deltaTime;
         while (timer < AttackCooldown)
         {
