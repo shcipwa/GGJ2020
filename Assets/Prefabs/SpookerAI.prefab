@@ -124,7 +124,7 @@ MonoBehaviour:
   VisionOccluders:
     serializedVersion: 2
     m_Bits: 1
-  VisionDistance: 15
+  VisionDistance: 3
   WanderSpeed: 1
   ChaseSpeed: 2.8
   CurrentState: 0
