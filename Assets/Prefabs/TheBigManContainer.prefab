@@ -80,8 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AimConstraint: {fileID: 22186711565372513}
   AimTwistHelper: {fileID: 5947866133099735989}
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
+  StartPosition: {fileID: 7415614818610663223}
+  EndPosition: {fileID: 7415614818049177639}
   BigManRoot: {fileID: 4049863710092018457}
   BigManAnimator: {fileID: 5244635899106374823}
   FistAnimator: {fileID: 7979120825493928438}
@@ -133,15 +133,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6835778091917863472, guid: b85f37712d15cce4aab238ecd006a371, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000032424925
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6835778091917863472, guid: b85f37712d15cce4aab238ecd006a371, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6835778091917863472, guid: b85f37712d15cce4aab238ecd006a371, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -52.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6835778091917863472, guid: b85f37712d15cce4aab238ecd006a371, type: 3}
       propertyPath: m_LocalRotation.w

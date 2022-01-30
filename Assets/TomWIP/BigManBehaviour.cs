@@ -49,6 +49,7 @@ public class BigManBehaviour : MonoBehaviour
 
         BigManRoot.position = StartPosition.position;
         BigManRoot.gameObject.SetActive(false);
+        Debug.Log($"BigMan {BigManRoot.name} went to sleep", BigManRoot);
         
         FistAnimator.Play("Relax");
     }

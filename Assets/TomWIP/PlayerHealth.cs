@@ -11,8 +11,10 @@ public class PlayerHealth : MonoBehaviour
     private int _recentHits;
     private float _regenTimer;
 
+    private float _knockedOutTimestamp;
     private bool _knockedOut;
     public bool KnockedOut => _knockedOut;
+    public float TimeAlive => Time.time - _knockedOutTimestamp;
 
     public float RespawnTime = 7f;
 
@@ -26,17 +28,7 @@ public class PlayerHealth : MonoBehaviour
         _recentHits++;
         if (_recentHits >= HitsToKnockout)
         {
-            _knockedOut = true;
-            
-            if (GlobalVolume.GetProfile().TryGet(out Exposure exposure))
-            {
-                exposure.fixedExposure.value = 15f;
-            }
-            
-            SpookerManager.Instance.KillAllSpookers();
-
-            StartCoroutine(RespawnRoutine());
-            
+            KnockOut();
             return;
         }
 
@@ -50,6 +42,22 @@ public class PlayerHealth : MonoBehaviour
         }
 
         _regenTimer = RegenTime;
+    }
+
+    private void KnockOut()
+    {
+        _knockedOut = true;
+        _knockedOutTimestamp = Time.time;
+            
+        if (GlobalVolume.GetProfile().TryGet(out Exposure exposure))
+        {
+            exposure.fixedExposure.value = 15f;
+        }
+            
+        SpookerManager.Instance.KillAllSpookers();
+        BigManManager.Instance.SleepAndReset();
+
+        StartCoroutine(RespawnRoutine());
     }
 
     private void Update()
