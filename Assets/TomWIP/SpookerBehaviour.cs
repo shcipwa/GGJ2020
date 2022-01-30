@@ -287,6 +287,11 @@ public class SpookerBehaviour : MonoBehaviour
         {
             return false;
         }
+
+        if (direction.sqrMagnitude > VisionDistance * VisionDistance)
+        {
+            return false;
+        }
         
         var ray = new Ray
         {
