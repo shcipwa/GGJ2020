@@ -58,17 +58,17 @@ public class GridManager : Singleton<GridManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.F4))
         {
             TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)),GridEventType.WhiteFlash);
         }
         
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.F5))
         {
             TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)),GridEventType.DestroyGrid);
         }
         
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.F6))
         {
             TriggerCell(new Vector2Int((int)(Random.value * GridSize),(int)(Random.value * GridSize)),GridEventType.RepairGrid);
         }
@@ -108,6 +108,13 @@ public class GridManager : Singleton<GridManager>
         var coordVec = GetNearestCell(transformPosition);
 
         GridCells[coordVec.x][coordVec.y].TriggerCell(type);
+    }
+
+    public bool IsNearestActive(Vector3 position)
+    {
+        var coordVec = GetNearestCell(position);
+
+        return GridCells[coordVec.x][coordVec.y].IsActive();
     }
 
     private Vector2Int GetNearestCell(Vector3 transformPosition)

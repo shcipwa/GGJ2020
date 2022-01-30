@@ -43,6 +43,12 @@ public class AnimateRenderEmissive : MonoBehaviour
     private float _startValue = 1;
 
 
+    public bool IsActive()
+    {
+        return !_isDestroyed;
+    }
+    
+    
     // Start is called before the first frame update
     void Start()
     {

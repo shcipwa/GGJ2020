@@ -307,8 +307,7 @@ public class SpookerBehaviour : MonoBehaviour
 
     private bool IsGridActive()
     {
-        // todo: implement a real check
-        return true;
+        return GridManager.Instance.IsNearestActive(transform.position);
     }
 
     public void Distract(Vector3 distractionPosition, float distrtactionLength)
