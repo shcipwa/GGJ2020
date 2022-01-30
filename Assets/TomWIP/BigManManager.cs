@@ -61,6 +61,7 @@ public class BigManManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("Wake em up")]
     public void WakeUp()
     {
         foreach (var man in BigMen)

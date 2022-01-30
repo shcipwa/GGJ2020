@@ -53,6 +53,27 @@ public class PoolSystem : MonoBehaviour
             
             SetActive(obj, true);
             queue.Enqueue(obj);
+
+            GameObject go = null;
+            if (prefab is Component)
+            {
+                go = ((Component)obj).gameObject;
+            }
+            else if (prefab is GameObject)
+            {
+                go = (GameObject)obj;
+            }
+
+            if (go != null)
+            {
+                var trans = go.transform;
+                var childCount = trans.childCount;
+                for (int i = 0; i < childCount; i++)
+                {
+                    trans.GetChild(i).gameObject.SendMessage("OnPoolSpawn", SendMessageOptions.DontRequireReceiver);
+                }
+                go.SendMessage("OnPoolSpawn", SendMessageOptions.DontRequireReceiver);
+            }
             
             return obj as T;
         }
