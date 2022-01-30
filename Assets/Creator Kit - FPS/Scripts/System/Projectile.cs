@@ -73,7 +73,26 @@ public class Projectile : MonoBehaviour
         source.pitch = Random.Range(0.8f, 1.1f);
         source.PlayOneShot(DestroyedSound);
 
-        GridManager.Instance.TriggerNearest(transform.position);
+        GridManager.Instance.TriggerNearest(transform.position, GridEventType.WhiteFlash);
+        var colliders = Physics.OverlapSphere(transform.position, 4, 1 << 12, QueryTriggerInteraction.Collide);
+        bool repairedSomething = false;
+        foreach (var collider1 in colliders)
+        {
+            var nodes = collider1.GetComponent<AnimateRenderEmissive>();
+            if (nodes.Repair())
+            {
+                repairedSomething = true;
+            }
+        }
+
+        if (repairedSomething)
+        {
+            GridManager.Instance.TriggerNearest(transform.position, GridEventType.RepairGrid);
+        }
+        else
+        {
+            GridManager.Instance.TriggerNearest(transform.position, GridEventType.WhiteFlash);
+        }
     }
 
     void Update()

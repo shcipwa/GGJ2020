@@ -5,6 +5,7 @@
     <e p="C:\Users\Tetsu\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_GGJ2022.1355643871.00" t="ExcludeRecursive" />
     <e p="D:\Code\GGJ2022" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Creator Kit - FPS" t="Include">
@@ -201,23 +202,44 @@
             <e p="GraphStandard.shader" t="Include" />
           </e>
         </e>
+        <e p="Plugins" t="Include">
+          <e p="Demigiant" t="Include">
+            <e p="DOTween" t="Include">
+              <e p="Modules" t="Include">
+                <e p="DOTweenModuleAudio.cs" t="Include" />
+                <e p="DOTweenModuleEPOOutline.cs" t="Include" />
+                <e p="DOTweenModulePhysics.cs" t="Include" />
+                <e p="DOTweenModulePhysics2D.cs" t="Include" />
+                <e p="DOTweenModuleSprite.cs" t="Include" />
+                <e p="DOTweenModuleUI.cs" t="Include" />
+                <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+                <e p="DOTweenModuleUtils.cs" t="Include" />
+              </e>
+              <e p="readme.txt" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="RandomMovement.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AnimateRenderEmissive.cs" t="Include" />
           <e p="DynamicResolutionTest.cs" t="Include" />
           <e p="GridManager.cs" t="Include" />
+          <e p="NewBehaviourScript.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
         </e>
         <e p="TomWIP" t="Include">
           <e p="AIChaseTest.cs" t="Include" />
+          <e p="AttentionGrabTester.cs" t="Include" />
           <e p="BasicEmissionPulse.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="JointSwapper.cs" t="Include" />
           </e>
+          <e p="FollowPlayer.cs" t="Include" />
           <e p="PlayerTag.cs" t="Include" />
           <e p="RandomizeScaleOnSpawn.cs" t="Include" />
           <e p="SpookerAttack.cs" t="Include" />
           <e p="SpookerBehaviour.cs" t="Include" />
+          <e p="SpookerMoveTest.cs" t="Include" />
           <e p="StarterAssets" t="Include">
             <e p="Editor" t="Include">
               <e p="FirstPersonStarterAssetsDeployMenu.cs" t="Include" />

@@ -19514,7 +19514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistractionRange: 30
-  DistractionTime: 10
+  DistractionTime: 5
   Mask:
     serializedVersion: 2
     m_Bits: 256
