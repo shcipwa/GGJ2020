@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,8 +24,14 @@ public class SpookerManager : MonoBehaviour
 
         if (Spookers.Count == 0)
         {
-            OnPlayerRespawn();
+            StartCoroutine(StartSpawnRoutine());
         }
+    }
+
+    private IEnumerator StartSpawnRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+        OnPlayerRespawn();
     }
 
     public void OnPlayerRespawn()
